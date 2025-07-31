@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/joho/godotenv"
 )
 
 func getIndex(w http.ResponseWriter, r *http.Request) {
@@ -12,6 +14,12 @@ func getIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	mux := http.NewServeMux()
 
 	// Static file routes

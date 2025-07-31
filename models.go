@@ -13,15 +13,16 @@ type Tide struct {
 
 // TidesResponse corresponds to the TidesResponse schema.
 type TidesResponse struct {
-	ReqLat       float64 `json:"req_lat"`
-	ReqLon       float64 `json:"req_lon"`
-	ReqTimestamp string  `json:"req_timestamp"`
-	RespLat      float64 `json:"resp_lat"`
-	RespLon      float64 `json:"resp_lon"`
-	Station      string  `json:"station"`
-	StationTZ    string  `json:"station_tz"`
-	Status       int     `json:"status"`
-	Tides        []Tide  `json:"tides"`
+	ReqLat        float64 `json:"req_lat"`
+	ReqLon        float64 `json:"req_lon"`
+	ReqTimestamp  string  `json:"req_timestamp"`
+	RespLat       float64 `json:"resp_lat"`
+	RespLon       float64 `json:"resp_lon"`
+	Station       string  `json:"station"`
+	StationTZ     string  `json:"station_tz"`
+	Status        int     `json:"status"`
+	WTI_copyright string  `json:"wti_copyright,omitempty"`
+	Tides         []Tide  `json:"tides"`
 }
 
 // Station corresponds to the Station schema.
@@ -49,6 +50,27 @@ type StationsResponse struct {
 	Status       string    `json:"status"`
 	StationCount int       `json:"station_count"`
 	Stations     []Station `json:"stations"`
+}
+
+type WorldTidesExtremesResponse struct {
+	Status        int     `json:"status"`
+	CallCount     int     `json:"callCount"`
+	Copyright     string  `json:"copyright"`
+	RequestLat    float64 `json:"requestLat"`
+	RequestLon    float64 `json:"requestLon"`
+	ResponseLat   float64 `json:"responseLat"`
+	ResponseLon   float64 `json:"responseLon"`
+	Atlas         string  `json:"atlas"`
+	Station       string  `json:"station"`
+	Timezone      string  `json:"timezone"`
+	RequestDatum  string  `json:"requestDatum"`
+	ResponseDatum string  `json:"responseDatum"`
+	Extremes      []struct {
+		Dt     int     `json:"dt"`
+		Date   string  `json:"date"`
+		Height float64 `json:"height"`
+		Type   string  `json:"type"`
+	} `json:"extremes"`
 }
 
 // --- Mock Data for Handlers ---
